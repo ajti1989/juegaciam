@@ -1,6 +1,7 @@
 <?php
 	//CABECERA DE HTML
 	include('cabecera.php');
+	//ole ole ole
 
 	//Templo = 100 madera, 50 piedra, 50 oro
 	//Almacen = 150 madera, 25 piedra, 100 comida
