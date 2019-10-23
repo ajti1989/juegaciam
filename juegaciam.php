@@ -1,4 +1,5 @@
 <?php
+	//cambio realizado en la rama new_master
 	//CABECERA DE HTML
 	include('cabecera.php');
 	//esto es un comentario
