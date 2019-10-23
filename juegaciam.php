@@ -1,6 +1,7 @@
 <?php
 	//CABECERA DE HTML
 	include('cabecera.php');
+	//esto es un comentario
 	//ole ole ole
 
 	//Templo = 100 madera, 50 piedra, 50 oro
