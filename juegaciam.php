@@ -6,7 +6,6 @@
 	//ole ole ole
 
 	//Templo = 100 madera, 50 piedra, 50 oro
-	//Almacen = 150 madera, 25 piedra, 100 comida
 	//Cuartel = 75 madera, 25 piedra, 50 comida, 20 oro
 
 	//session_destroy();
@@ -18,7 +17,6 @@
         $sessionTTL2 = time() - $_SESSION["intervalo"];
         $num_decremento = $sessionTTL2 / 5;
         $_SESSION['suministros']['oro']-=round($num_decremento);
-            
     } 
 
     $_SESSION["intervalo"] = time();
@@ -36,7 +34,6 @@
 		$_SESSION['suministros']['marmol'] = 2000;
 
 		$_SESSION['edificios'] = array();
-		$_SESSION['edificios']['almacenes'] = 0;
 		$_SESSION['edificios']['cuarteles'] = 0;
 		$_SESSION['edificios']['templos'] = 0;
 	}
@@ -46,27 +43,10 @@
 	$madera = $_SESSION['suministros']['madera'];
 	$comida = $_SESSION['suministros']['comida'];
 	$marmol = $_SESSION['suministros']['marmol'];
-	$num_almacenes = $_SESSION['edificios']['almacenes'];
 	$num_cuarteles = $_SESSION['edificios']['cuarteles'];
 	$num_templos = $_SESSION['edificios']['templos'];
 
-	//Comprobamos que botón de construcción se ha pulsado
-	if (isset($_POST['almacen_x'])) {
-		//Construimos almacén
-		if ( ($madera >= 150) && ($marmol >= 25) && ($comida >= 100) ) {
-			//A construir
-			$_SESSION['edificios']['almacenes']++;
-			$num_almacenes++;
-
-			//Decrementar stock
-			$_SESSION['suministros']['madera']-=150;
-			$_SESSION['suministros']['marmol']-=25;
-			$_SESSION['suministros']['comida']-=100;
-			$madera = $_SESSION['suministros']['madera'];
-			$comida = $_SESSION['suministros']['comida'];
-			$marmol = $_SESSION['suministros']['marmol'];
-		}
-	}
+	
 	//Construimos templo
 	if (isset($_POST['templo_x'])) {
 		//Mirar si hay recursos
@@ -118,9 +98,13 @@
 
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-	    	<input type="image" src="imgs/crear_almacen.gif" name="almacen" value="almacen">
-	    	<input type="image" src="imgs/crear_templo.gif" name="templo" value="templo">
-	    	<input type="image" src="imgs/crear_cuartel.gif" name="cuartel" value="cuartel">	  
+	    	<input type="image" src="imgs/templo.gif" name="templo" value="templo">
+	    	<input type="image" src="imgs/cuartel.gif" name="cuartel" value="cuartel">	  
+			<!--imagenes edificios-->
+			<input type="image" src="imgs/aserradero.png" name="aserradero" value="aserradero">	  
+	    	<input type="image" src="imgs/cantera.png" name="cantera" value="cantera">	  
+	    	<input type="image" src="imgs/huerto.png" name="huerto" value="huerto">	  
+	    	<input type="image" src="imgs/mercado.png" name="mercado" value="mercado">	  
 
 
 	</form>
@@ -130,7 +114,6 @@
 	print "<p>";
 	print "<span>Templos: $num_templos</span>&nbsp;&nbsp;&nbsp;";
 	print "<span>Cuarteles: $num_cuarteles</span>&nbsp;&nbsp;&nbsp;";
-	print "<span>Almacenes: $num_almacenes</span>";
 	print "</p>";
 
 ?>
