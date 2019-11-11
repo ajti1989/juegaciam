@@ -9,6 +9,7 @@
 
 	//Cada minuto: -20 comida, -10 oro --> OPCIONAL PARA EL FINAL
 	
+	header("Refresh:5 url=juegaciam.php");
    
     if(isset($_SESSION["intervalo"])){
         // Calcular el tiempo de vida de la sesión (TTL = Time To Live)
@@ -151,6 +152,23 @@
 			$oro = $_SESSION['suministros']['oro'];
 		}
 	}
+
+
+
+	//Programamos el costo y la ganancia que producen los edificios
+
+	$numeroEdificios=$num_aserraderos+$num_canteras+$num_mercados+$num_huertos;
+	$gastoOro=$numeroEdificios;
+	$gastoComida=$numeroEdificios*2;
+
+	$_SESSION['suministros']['oro']-=$gastoOro;
+	$_SESSION['suministros']['comida']-=$gastoComida;
+
+	
+	$_SESSION['suministros']['oro']+=$num_mercados*2;
+	$_SESSION['suministros']['madera']+=$num_aserraderos*10;
+	$_SESSION['suministros']['marmol']+=$num_canteras*10;
+	$_SESSION['suministros']['comida']+=$num_huertos*10;
 
 ?>
 
