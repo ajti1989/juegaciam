@@ -1,7 +1,6 @@
 <?php
     //ESTO SIEMPRE ES LO PRIMERO
-	session_start();
-
+    session_start();
 
     // Establecer tiempo de vida de la sesión en segundos
     $inactividad = 60*15;
